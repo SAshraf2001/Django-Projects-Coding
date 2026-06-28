@@ -6,4 +6,4 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def task_view(request):
-    return HttpResponse('This is the testing of the Task Page:')
+    return render(request, 'taskApp/taskFlow_dashboard.html')
