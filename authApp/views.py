@@ -62,4 +62,6 @@ def signup_view(request):
 
 
 def logout_view(request):
-    pass
+    logout(request)
+    messages.success(request, 'Logout Successfull')
+    return redirect('home')
