@@ -12,5 +12,6 @@ def task_view(request):
         taskDescription = request.POST['taskDescription']
         taskCategory = request.POST['taskCategory']
         status = request.POST['taskStatus']
+        catObject = Category.objects.create(catName=taskCategory, user=request.user.userProfile)
         
     return render(request, 'taskApp/taskFlow_dashboard.html')
