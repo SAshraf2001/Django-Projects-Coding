@@ -9,4 +9,6 @@ from django.contrib.auth.decorators import login_required
 def task_view(request):
     if request.method == 'POST':
         taskName = request.POST['taskName']
+        taskDescription = request.POST['taskDescription']
+        
     return render(request, 'taskApp/taskFlow_dashboard.html')
