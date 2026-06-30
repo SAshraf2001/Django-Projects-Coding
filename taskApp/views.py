@@ -16,7 +16,7 @@ def task_view(request):
         catObject = Category.objects.get_or_create(catName=taskCategory, user=request.user)
         if catObject is not None:
             catObject = catObject[0]
-            # print(f'Cat Object is added into the Database: {catObject}')
+            print(f'Cat Object is added into the Database: {catObject}')
             catObject.save();
         
         print(f'Cat Objects has been pushed {catObject.catName}')
@@ -27,6 +27,10 @@ def task_view(request):
             taskObject.save();
             return redirect('home')
         
-    return render(request, 'taskApp/taskFlow_dashboard.html')
+    param = Task.objects.filter(user=request.user)
+    print(f'Task Object is Saved into the Database: {param}')
+    paramCat = Category.objects.filter(user=request.user)
+    print(f'Cat Name has been seen: {paramCat[0].catName}')    
+    return render(request, 'taskApp/taskFlow_dashboard.html', {'params': param, 'catParams': paramCat})
 
 
